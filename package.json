@@ -1,0 +1,34 @@
+{
+  "name": "discord.js-v14-slash-müzik-botu",
+  "version": "1.0.0",
+  "description": "Thendra tarafından geliştirilmiş slash komutlu v14 müzik botu",
+  "main": "not.js",
+  "scripts": {
+    "nodemon": "node bot.js"
+  },
+  "keywords": [
+    "Müzik Bot",
+    "Discord",
+    "Discord Bot",
+    "Discord Müzik Bot"
+  ],
+  "author": "Thendra",
+  "license": "MIT",
+  "dependencies": {
+    "@discordjs/opus": "^0.9.0",
+    "@discordjs/voice": "^0.17.0",
+    "axios": "^1.7.2",
+    "cute-logs": "^0.0.1",
+    "discord.js": "^14.15.2",
+    "ffmpeg-static": "^5.2.0",
+    "libsodium-wrappers": "^0.7.13",
+    "simple-youtube-api": "^5.2.1",
+    "spotify-web-api-node": "^5.0.2",
+    "youtube-data-api": "^1.0.1",
+    "youtube-search-without-api-key": "^2.0.1",
+    "ytdl-core": "^4.11.5",
+    "ytdl-core-discord": "^1.3.1",
+    "ytpl": "^2.3.0",
+    "ytsr": "^3.8.4"
+  }
+}

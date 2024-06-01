@@ -1,0 +1,11 @@
+{
+    "bot": {
+        "client_id": "",
+        "token": "",
+        "presence": {
+            "text": "Discord v14 Müzik Botu by Thendra",
+            "status": "idle",
+            "activity": "ActivityType.Listening"
+        }
+    }
+}
