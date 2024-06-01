@@ -19,7 +19,7 @@ module.exports = {
             .setAuthor({ name: "Şu anda çalan bir şarkı yok.", iconURL: interaction.client.user.displayAvatarURL()})
             .setDescription(`Şu anda çalan bir şarkı yok.`)
             .setColor("Random")
-            .setFooter({text: `${interaction.client.username}`})
+            .setFooter({text: `${interaction.client.user.username}`})
             .setTimestamp()
             interaction.reply({embeds: [notplayingMusicEmb]})
         }
@@ -32,7 +32,7 @@ module.exports = {
             .setAuthor({ name: "Hatalı komut kullanıldı.", iconURL: interaction.client.user.displayAvatarURL()})
             .setDescription(`Lütfen 0 ile 100 arasında bir ses seviyesi belirtin.`)
             .setColor("Random")
-            .setFooter({text: `${interaction.client.username}`})
+            .setFooter({text: `${interaction.client.user.username}`})
             .setTimestamp()
             interaction.reply({embeds: [setVolumeEmb]})
         }
@@ -42,7 +42,7 @@ module.exports = {
         .setAuthor({ name: "Ses seviyesi ayarlandı.", iconURL: interaction.client.user.displayAvatarURL()})
         .setDescription(`Ses seviyesi \`${level}\` olarak ayarlandı.`)
         .setColor("Random")
-        .setFooter({text: `${interaction.client.username}`})
+        .setFooter({text: `${interaction.client.user.username}`})
         .setTimestamp()
         interaction.reply({embeds: [setVolumeEmb]})
     }
