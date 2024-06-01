@@ -16,7 +16,7 @@ module.exports = {
         .setAuthor({ name: `Döngü modu ${interaction.client.loop ? 'aktif' : 'pasif'}.`, iconURL: interaction.client.user.displayAvatarURL()})
         .setDescription(`Döngü modu \`${interaction.client.loop ? 'aktif' : 'pasif'}\` hale getirildi.`)
         .setColor("Random")
-        .setFooter({text: `${interaction.client.username}`})
+        .setFooter({text: `${interaction.client.user.username}`})
         .setTimestamp()
         interaction.reply({embeds: [loopEmb]})
     }
