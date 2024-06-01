@@ -8,7 +8,7 @@ module.exports = {
     async execute(interaction) {
 
         const help = new EmbedBuilder()
-        .setAuthor({ name: `🎉 ${interaction.client.username} burada!`, iconURL: interaction.client.user.displayAvatarURL()})
+        .setAuthor({ name: `🎉 ${interaction.client.user.username} burada!`, iconURL: interaction.client.user.displayAvatarURL()})
         .setColor("Random")
         .addFields(
             { name: "/play `<link>`", value: "Girdiğiniz linke ait şarkıyı açılır."},
@@ -24,7 +24,7 @@ module.exports = {
 
         const button1 = new ButtonBuilder()
         .setLabel('Botu Davet Et')
-        .setURL('https://discord.com/oauth2/authorize?client_id=${config.bot.client_id}&scope=bot&permissions=277062437952')
+        .setURL('https://discord.com/oauth2/authorize?client_id=' + config.bot.client_id + '&scope=bot&permissions=277062437952')
         .setStyle(ButtonStyle.Link);
 
         const button2 = new ButtonBuilder()
