@@ -16,7 +16,7 @@ module.exports = {
                 .setAuthor({ name: "Şarkı devam ediyor.", iconURL: interaction.client.user.displayAvatarURL()})
                 .setDescription(`Şarkı kaldığı yerden devam ediyor.`)
                 .setColor("Random")
-                .setFooter({text: `${interaction.client.username}`})
+                .setFooter({text: `${interaction.client.user.username}`})
                 .setTimestamp()
                 interaction.reply({embeds: [resumeEmb]})
             } else {
@@ -24,7 +24,7 @@ module.exports = {
                 .setAuthor({ name: "Şarkı zaten devam ediyor.", iconURL: interaction.client.user.displayAvatarURL()})
                 .setDescription(`Şarkı zaten devam ediyor.`)
                 .setColor("Random")
-                .setFooter({text: `${interaction.client.username}`})
+                .setFooter({text: `${interaction.client.user.username}`})
                 .setTimestamp()
                 interaction.reply({embeds: [aldreadyMusicResume]})
             }
@@ -33,7 +33,7 @@ module.exports = {
                 .setAuthor({ name: "Duraklatılmış bir şarkı yok.", iconURL: interaction.client.user.displayAvatarURL()})
                 .setDescription(`Duraklatılmış bir şarkı göremedim.`)
                 .setColor("Random")
-                .setFooter({text: `${interaction.client.username}`})
+                .setFooter({text: `${interaction.client.user.username}`})
                 .setTimestamp()
                 interaction.reply({embeds: [notplayingMusicEmb]})
         }
