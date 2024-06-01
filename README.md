@@ -1,6 +1,6 @@
 <div align="center">
     <h1>Discord.js v14 Müzik Botu</h1>
-    <h5><a href="https://discord.com/users/267373400022843393">Thendra</a>Tarafından Geliştirildi.</h5>
+    <h5><a href="https://discord.com/users/267373400022843393">Thendra</a> Tarafından Geliştirildi.</h5>
 </div>
 
 ## Başlangıç
