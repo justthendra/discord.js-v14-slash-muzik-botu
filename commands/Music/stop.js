@@ -18,7 +18,7 @@ module.exports = {
             .setAuthor({ name: "Şarkı kapatıldı.", iconURL: interaction.client.user.displayAvatarURL()})
             .setDescription(`Şarkı kapatıldığı için kanaldan ayrılıyorum.`)
             .setColor("Random")
-            .setFooter({text: `${interaction.client.username}`})
+            .setFooter({text: `${interaction.client.user.username}`})
             .setTimestamp()
             interaction.reply({embeds: [stopEmb]})
         } else {
@@ -26,7 +26,7 @@ module.exports = {
             .setAuthor({ name: "Şu anda çalan bir şarkı yok.", iconURL: interaction.client.user.displayAvatarURL()})
             .setDescription(`Şu anda bir şarkı çalmıyor zaten.`)
             .setColor("Random")
-            .setFooter({text: `${interaction.client.username}`})
+            .setFooter({text: `${interaction.client.user.username}`})
             .setTimestamp()
             interaction.reply({embeds: [noQueEmb]})
         }
