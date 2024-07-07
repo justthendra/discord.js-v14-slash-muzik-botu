@@ -2,6 +2,7 @@ const { SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder } = require("disc
 const { createAudioPlayer, createAudioResource, joinVoiceChannel, AudioPlayerStatus, VoiceConnectionStatus } = require('@discordjs/voice');
 const ytdl = require('ytdl-core-discord');
 const ytpl = require('ytpl');
+const youtubeSearchApi = require('youtube-search-api');
 require('cute-logs')
 
 module.exports = {
@@ -10,7 +11,7 @@ module.exports = {
         .setDescription("Bir müzik veya çalma listesini çalın.")
         .setDefaultMemberPermissions(PermissionFlagsBits.Connect)
         .addStringOption(link =>
-            link.setName("link")
+            link.setName("şarkı_ismi")
                 .setDescription("Bir link belirtmen lazım.")
                 .setRequired(true)
         ),
@@ -21,10 +22,25 @@ module.exports = {
             return interaction.editReply({ content: "Ses kanalında değilsin. Lütfen ses kanalına bağlan.", ephemeral: true });
         }
 
-        const url = interaction.options.getString('link');
+        const input = interaction.options.getString('şarkı_ismi');
+        let url;
 
-        if (!ytdl.validateURL(url) && !ytpl.validateID(url)) {
-            return interaction.editReply({ content: 'Geçerli bir link belirtmen lazım.' });
+        if (ytdl.validateURL(input) || ytpl.validateID(input)) {
+            url = input;
+        } else {
+            // Perform a search for the song name
+            try {
+                const searchResults = await youtubeSearchApi.GetListByKeyword(input, false);
+                if (searchResults.items.length > 0) {
+                    const video = searchResults.items[0];
+                    url = `https://www.youtube.com/watch?v=${video.id}`;
+                } else {
+                    return interaction.editReply({ content: 'Aramanızla eşleşen şarkı bulunamadı.' });
+                }
+            } catch (error) {
+                console.error('Şarkı araması yapılırken bir hata oldu:' + error, "Hata");
+                return interaction.editReply({ content: 'Şarkı araması yapılırken bir hata oldu.' });
+            }
         }
 
         let connection;
@@ -135,7 +151,7 @@ module.exports = {
                 player.on(AudioPlayerStatus.Idle, () => {
                     const nextSong = interaction.client.queue.shift();
                     if (nextSong) {
-                        playSong(nextSong, interaction);
+                        playSong(nextSong.url, interaction);
                     } else {
                         connection.destroy();
                     }
