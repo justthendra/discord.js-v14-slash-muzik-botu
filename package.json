@@ -25,6 +25,7 @@
     "simple-youtube-api": "^5.2.1",
     "spotify-web-api-node": "^5.0.2",
     "youtube-data-api": "^1.0.1",
+    "youtube-search-api": "^1.2.2",
     "youtube-search-without-api-key": "^2.0.1",
     "ytdl-core": "^4.11.5",
     "ytdl-core-discord": "^1.3.1",
