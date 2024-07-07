@@ -28,7 +28,7 @@ module.exports = {
         if (ytdl.validateURL(input) || ytpl.validateID(input)) {
             url = input;
         } else {
-            // Perform a search for the song name
+            
             try {
                 const searchResults = await youtubeSearchApi.GetListByKeyword(input, false);
                 if (searchResults.items.length > 0) {
