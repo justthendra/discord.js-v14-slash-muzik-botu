@@ -2,7 +2,7 @@
   "name": "discord.js-v14-slash-müzik-botu",
   "version": "1.0.0",
   "description": "Thendra tarafından geliştirilmiş slash komutlu v14 müzik botu",
-  "main": "not.js",
+  "main": "bot.js",
   "scripts": {
     "nodemon": "node bot.js"
   },
