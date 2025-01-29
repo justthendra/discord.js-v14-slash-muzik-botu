@@ -14,13 +14,6 @@ module.exports = {
             return interaction.editReply('Şu anda çalan bir şarkı yok.');
         }
 
-        const formatDuration = (duration) => {
-            const seconds = duration % 60;
-            const minutes = Math.floor(duration / 60) % 60;
-            const hours = Math.floor(duration / 3600);
-            return `${hours ? hours + ':' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-        };
-
         const song = {
             title: currentSong.title,
             url: currentSong.url,

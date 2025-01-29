@@ -1,5 +1,5 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-const ytdl = require('ytdl-core-discord');
+const ytdl = require('@distube/ytdl-core');
 const { createAudioResource, AudioPlayerStatus } = require('@discordjs/voice');
 
 module.exports = {
@@ -33,7 +33,7 @@ async function playSong(songUrl, interaction) {
 
         let info;
         try {
-            info = await ytdl.getInfo(songUrl);
+            info = await ytdl.getBasicInfo(songUrl);
         } catch (error) {
             console.error('Şarkı bilgileri alınırken bir hata oldu:', error);
             return;

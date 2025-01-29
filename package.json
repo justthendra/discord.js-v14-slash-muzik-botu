@@ -1,5 +1,5 @@
 {
-  "name": "discord.js-v14-slash-müzik-botu",
+  "name": "discord.js-v14-slash-muzik-botu",
   "version": "1.0.0",
   "description": "Thendra tarafından geliştirilmiş slash komutlu v14 müzik botu",
   "main": "bot.js",
@@ -17,6 +17,7 @@
   "dependencies": {
     "@discordjs/opus": "^0.9.0",
     "@discordjs/voice": "^0.17.0",
+    "@distube/ytdl-core": "^4.15.9",
     "axios": "^1.7.2",
     "cute-logs": "^0.0.1",
     "discord.js": "^14.15.2",
@@ -27,8 +28,6 @@
     "youtube-data-api": "^1.0.1",
     "youtube-search-api": "^1.2.2",
     "youtube-search-without-api-key": "^2.0.1",
-    "ytdl-core": "^4.11.5",
-    "ytdl-core-discord": "^1.3.1",
     "ytpl": "^2.3.0",
     "ytsr": "^3.8.4"
   }

@@ -4,7 +4,6 @@ module.exports = {
     data: new SlashCommandBuilder()
     .setName('volume')
     .setDescription("Şarkının ses seviyesini ayarlarsınız.")
-    .setDefaultMemberPermissions(PermissionFlagsBits.Connect)
     .addIntegerOption(volume =>
         volume.setName("seviye")
         .setDescription("Ses seviyesi belirtin.")

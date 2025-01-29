@@ -1,6 +1,6 @@
-const { SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder } = require("discord.js");
+const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 const { createAudioPlayer, createAudioResource, joinVoiceChannel, AudioPlayerStatus, VoiceConnectionStatus } = require('@discordjs/voice');
-const ytdl = require('ytdl-core-discord');
+const ytdl = require('@distube/ytdl-core');
 const ytpl = require('ytpl');
 const youtubeSearchApi = require('youtube-search-api');
 require('cute-logs')
@@ -9,9 +9,8 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('play')
         .setDescription("Bir müzik veya çalma listesini çalın.")
-        .setDefaultMemberPermissions(PermissionFlagsBits.Connect)
         .addStringOption(link =>
-            link.setName("şarkı_ismi")
+            link.setName("link_or_name")
                 .setDescription("Bir link belirtmen lazım.")
                 .setRequired(true)
         ),
@@ -22,13 +21,13 @@ module.exports = {
             return interaction.editReply({ content: "Ses kanalında değilsin. Lütfen ses kanalına bağlan.", ephemeral: true });
         }
 
-        const input = interaction.options.getString('şarkı_ismi');
+        const input = interaction.options.getString('link_or_name');
         let url;
 
-        if (ytdl.validateURL(input) || ytpl.validateID(input)) {
+        if (ytdl(input) || ytpl.validateID(input)) {
             url = input;
         } else {
-            
+            // Perform a search for the song name
             try {
                 const searchResults = await youtubeSearchApi.GetListByKeyword(input, false);
                 if (searchResults.items.length > 0) {
@@ -71,7 +70,7 @@ module.exports = {
 
         let info;
                 try {
-                    info = await ytdl.getInfo(url);
+                    info = await ytdl.getBasicInfo(url);
                 } catch (error) {
                     console.error('Şarkı bilgileri alınırken bir hata oldu:' + error, "Hata");
                     return;
@@ -100,7 +99,7 @@ module.exports = {
 
                 let info;
                 try {
-                    info = await ytdl.getInfo(songUrl);
+                    info = await ytdl.getBasicInfo(songUrl);
                     interaction.client.currentSong = info;
                 } catch (error) {
                     console.error('Şarkı bilgileri alınırken bir hata oldu:' + error, "Hata");

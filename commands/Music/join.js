@@ -5,8 +5,7 @@ require('cute-logs')
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('join')
-        .setDescription("Botu ses kanalınıza ekler.")
-        .setDefaultMemberPermissions(PermissionFlagsBits.Connect),
+        .setDescription("Botu ses kanalınıza ekler."),
     async execute(interaction) {
         await interaction.deferReply();
 
@@ -33,7 +32,13 @@ module.exports = {
             });
 
             interaction.client.connection = connection;
-            interaction.editReply('Ses kanalına bağlandım!');
+            const embed = new EmbedBuilder()
+            .setDescription('📥 Ses kanalına katıldım!')
+            .setColor("Random")
+            .setFooter({ text: interaction.client.username, iconURL: interaction.client.user.displayAvatarURL() })
+            .setTimestamp()
+            .setAuthor({ name: 'Katıldım!', iconURL: interaction.client.user.displayAvatarURL() });
+            interaction.editReply({ embeds: [embed] });
         } catch (error) {
             console.error('Ses kanalına bağlanırken bir hata oluştu:' + error, "Hata");
             return interaction.editReply({ content: 'Ses kanalına bağlanırken bir hata oluştu.'});

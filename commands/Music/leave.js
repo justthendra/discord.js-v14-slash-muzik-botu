@@ -1,12 +1,12 @@
 const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
 const { VoiceConnectionStatus } = require('@discordjs/voice');
+const { EmbedBuilder } = require('discord.js');
 require('cute-logs')
 
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('leave')
-        .setDescription("Botun ses kanalından ayrılmasını sağlar.")
-        .setDefaultMemberPermissions(PermissionFlagsBits.Connect),
+        .setDescription("Botun ses kanalından ayrılmasını sağlar."),
     async execute(interaction) {
         await interaction.deferReply();
 
@@ -19,7 +19,14 @@ module.exports = {
         try {
             connection.destroy();
             interaction.client.connection = null;
-            interaction.editReply('Ses kanalından ayrıldım!');
+
+            const embed = new EmbedBuilder()
+            .setDescription('📤 Ses kanalından ayrıldım!')
+            .setColor("Random")
+            .setFooter({ text: interaction.client.username, iconURL: interaction.client.user.displayAvatarURL() })
+            .setTimestamp()
+            .setAuthor({ name: 'Ayrıldım!', iconURL: interaction.client.user.displayAvatarURL() });
+            interaction.editReply({ embeds: [embed] });
         } catch (error) {
             console.error('Ses kanalından ayrılırken bir hata oluştu:' + error, "Hata");
             interaction.editReply({ content: 'Ses kanalından ayrılırken bir hata oluştu.', ephemeral: true });

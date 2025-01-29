@@ -3,8 +3,7 @@ const { SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder } = require("disc
 module.exports = {
     data: new SlashCommandBuilder()
     .setName("pause")
-    .setDescription("Şarkıyı duraklatırsınız.")
-    .setDefaultMemberPermissions(PermissionFlagsBits.Connect),
+    .setDescription("Şarkıyı duraklatırsınız."),
     async execute(interaction) {
 
         const player = interaction.client.player;

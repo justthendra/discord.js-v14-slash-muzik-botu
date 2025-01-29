@@ -3,8 +3,7 @@ const { SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder } = require("disc
 module.exports = {
     data: new SlashCommandBuilder()
     .setName("resume")
-    .setDescription("Durdurulan şarkıyı devam ettirirsiniz.")
-    .setDefaultMemberPermissions(PermissionFlagsBits.Connect),
+    .setDescription("Durdurulan şarkıyı devam ettirirsiniz."),
     async execute(interaction) {
 
         const player = interaction.client.player;

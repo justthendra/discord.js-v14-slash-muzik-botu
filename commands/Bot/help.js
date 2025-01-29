@@ -16,10 +16,19 @@ module.exports = {
             { name: "/loop", value: "Döngü modunu açarsınız ve şarkı tekrarlanır veya tekrarlanmaz.", inline: true },
             { name: "/pause", value: "Şarkıyı duraklatırsınız.", inline: true },
             { name: "/resume", value: "Durdurulan şarkıyı devam ettirirsiniz.", inline: true },
-            { name: "/volume", value: "Ses seviyesini ayarlarsınız.", inline: true }
+            { name: "/volume", value: "Ses seviyesini ayarlarsınız (0 ile 100 arasında).", inline: true },
+            { name: "/queue", value: "Çalma sırasını gösterir.", inline: true },
+            { name: "/skip", value: "Çalan şarkıyı atlar ve sıradaki şarkıya geçer.", inline: true },
+            { name: "/remove", value: "Çalma sırasındaki belirli bir şarkıyı kaldırır.", inline: true },
+            { name: "/join", value: "Botu ses kanalınıza ekler.", inline: true },
+            { name: "/leave", value: "Botun ses kanalından ayrılmasını sağlar.", inline: true },
+            { name: "/lyrics", value: "Çalan şarkının varsa sözlerini gösterir.", inline: true },
+            { name: "/nowplaying", value: "Çalan şarkıyı gösterir.", inline: true },
+
+
         )
         .setDescription(`Bütün komutlarım aşağıda yer alıyor.\n**NOT:** __Proje tamamlanmadı geliştirilmeye devam ediyor. Son hali github'da paylaşılacaktır.__`)
-        .setFooter({text: `${interaction.client.username} | Yardım Sayfası`, iconURL: interaction.client.user.displayAvatarURL()})
+        .setFooter({text: `${interaction.client.user.username} | Yardım Sayfası`, iconURL: interaction.client.user.displayAvatarURL()})
         .setTimestamp()
 
         const button1 = new ButtonBuilder()

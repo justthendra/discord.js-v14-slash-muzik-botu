@@ -3,8 +3,7 @@ const { SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder } = require("disc
 module.exports = {
     data: new SlashCommandBuilder()
     .setName('loop')
-    .setDescription("Şarkının döngü modunu açar/kapatırsınız.")
-    .setDefaultMemberPermissions(PermissionFlagsBits.Connect),
+    .setDescription("Şarkının döngü modunu açar/kapatırsınız."),
     async execute(interaction) {
 
         if (!interaction.client.player) {

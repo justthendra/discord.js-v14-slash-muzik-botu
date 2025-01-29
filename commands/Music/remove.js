@@ -4,7 +4,6 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('remove')
         .setDescription('Çalma sırasındaki belirli bir şarkıyı kaldırır.')
-        .setDefaultMemberPermissions(PermissionFlagsBits.Connect)
         .addIntegerOption(option => 
             option.setName('sıra')
                 .setDescription('Kaldırmak istediğiniz şarkının sıra numarası.')
@@ -25,6 +24,12 @@ module.exports = {
 
         const removedSong = queue.splice(index, 1)[0];
 
-        interaction.editReply({ content: `\`${removedSong.title}\` şarkısı çalma sırasından kaldırıldı.` });
+        const embed = new EmbedBuilder()
+        .setDescription(`\`${removedSong.title}\` şarkısı çalma sırasından kaldırıldı.`)
+        .setColor("Random")
+        .setFooter({ text: interaction.client.username, iconURL: interaction.client.user.displayAvatarURL() })
+        .setTimestamp()
+        .setAuthor({ name: 'Bir şarkı listeden kaldırıldı!', iconURL: interaction.client.user.displayAvatarURL() });
+        interaction.editReply({ embeds: [embed] });
     }
 };
