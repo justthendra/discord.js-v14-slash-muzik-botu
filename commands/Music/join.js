@@ -1,6 +1,5 @@
 const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
 const { joinVoiceChannel, VoiceConnectionStatus } = require('@discordjs/voice');
-require('cute-logs')
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -23,12 +22,12 @@ module.exports = {
             });
 
             connection.on(VoiceConnectionStatus.Ready, () => {
-                console.info('Ses kanalına bağlandım!', "Müzik");
+                console.log('Ses kanalına bağlandım!');
             });
 
             connection.on(VoiceConnectionStatus.Disconnected, () => {
                 connection.destroy();
-                console.info('Ses kanalından ayrıldım!', "Müzik");
+                console.log('Ses kanalından ayrıldım!');
             });
 
             interaction.client.connection = connection;
@@ -40,8 +39,9 @@ module.exports = {
             .setAuthor({ name: 'Katıldım!', iconURL: interaction.client.user.displayAvatarURL() });
             interaction.editReply({ embeds: [embed] });
         } catch (error) {
-            console.error('Ses kanalına bağlanırken bir hata oluştu:' + error, "Hata");
+            console.log('Ses kanalına bağlanırken bir hata oluştu:' + error);
             return interaction.editReply({ content: 'Ses kanalına bağlanırken bir hata oluştu.'});
         }
     }
+
 };
