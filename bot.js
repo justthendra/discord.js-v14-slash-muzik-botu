@@ -1,6 +1,5 @@
 const { Client, GatewayIntentBits, Collection } = require('discord.js');
 const config = require('./config.json')
-require('cute-logs')
 
 const fs = require('node:fs');
 const path = require('node:path')
@@ -49,7 +48,7 @@ for (const folder of commandFolders) {
 		if ('data' in command && 'execute' in command) {
 			commands.push(command.data.toJSON());
 		} else {
-			console.error(`[UYARI] ${filePath} isimli komut "data" veya "execute" tanımı içermediği için çalıştırılamadı.`, "Komutlar");
+			console.log(`[UYARI] ${filePath} isimli komut "data" veya "execute" tanımı içermediği için çalıştırılamadı.`);
 		}
 	}
 }
@@ -58,7 +57,7 @@ const rest = new REST().setToken(config.bot.token);
 
 (async () => {
 	try {
-		console.info(`${commands.length} adet entegrasyon komutu (/) yenileniyor.`, "Komutlar");
+		console.log(`${commands.length} adet entegrasyon komutu (/) yenileniyor.`);
 
 		
 		const data = await rest.put(
@@ -66,7 +65,7 @@ const rest = new REST().setToken(config.bot.token);
 			{ body: commands },
 		);
 
-		console.info(`${data.length} adet entegrasyon komutu (/) başarıyla yenilendi.`, "Komutlar");
+		console.log(`${data.length} adet entegrasyon komutu (/) başarıyla yenilendi.`);
 	} catch (error) {
 		
 		console.error(error);
@@ -95,5 +94,6 @@ process.on('unhandledRejection', (reason, p) => {
 process.on('uncaughtException', (err, origin) => {
     console.log(err, origin);
 })
+
 
 client.login(config.bot.token);
