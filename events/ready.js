@@ -1,6 +1,5 @@
 const { ActivityType, Events } = require('discord.js');
 const config = require('../config.json')
-require('cute-logs')
 
 module.exports = {
     name: Events.ClientReady,
@@ -15,6 +14,7 @@ module.exports = {
             }]
         })
 
-        console.success(client.user.username + " müzik açmaya hazır!", "Bot");
+        console.log(client.user.username + " müzik açmaya hazır!");
     }
+
 }
