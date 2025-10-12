@@ -35,7 +35,7 @@ async function playSong(songUrl, interaction) {
         try {
             info = await ytdl.getBasicInfo(songUrl);
         } catch (error) {
-            console.error('Şarkı bilgileri alınırken bir hata oldu:', error);
+            console.log('Şarkı bilgileri alınırken bir hata oldu:', error);
             return;
         }
 
@@ -93,4 +93,5 @@ async function playSong(songUrl, interaction) {
         interaction.client.connection.destroy();
         interaction.editReply({ content: 'Şarkı açılırken bir hata oldu.' });
     }
+
 }
