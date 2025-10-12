@@ -1,7 +1,6 @@
 const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
 const { VoiceConnectionStatus } = require('@discordjs/voice');
 const { EmbedBuilder } = require('discord.js');
-require('cute-logs')
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -28,8 +27,9 @@ module.exports = {
             .setAuthor({ name: 'Ayrıldım!', iconURL: interaction.client.user.displayAvatarURL() });
             interaction.editReply({ embeds: [embed] });
         } catch (error) {
-            console.error('Ses kanalından ayrılırken bir hata oluştu:' + error, "Hata");
+            console.log('Ses kanalından ayrılırken bir hata oluştu:' + error);
             interaction.editReply({ content: 'Ses kanalından ayrılırken bir hata oluştu.', ephemeral: true });
         }
     }
+
 };
