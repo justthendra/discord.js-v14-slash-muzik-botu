@@ -3,7 +3,6 @@ const { createAudioPlayer, createAudioResource, joinVoiceChannel, AudioPlayerSta
 const ytdl = require('@distube/ytdl-core');
 const ytpl = require('ytpl');
 const youtubeSearchApi = require('youtube-search-api');
-require('cute-logs')
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -37,7 +36,7 @@ module.exports = {
                     return interaction.editReply({ content: 'Aramanızla eşleşen şarkı bulunamadı.' });
                 }
             } catch (error) {
-                console.error('Şarkı araması yapılırken bir hata oldu:' + error, "Hata");
+                console.log('Şarkı araması yapılırken bir hata oldu:' + error);
                 return interaction.editReply({ content: 'Şarkı araması yapılırken bir hata oldu.' });
             }
         }
@@ -51,16 +50,16 @@ module.exports = {
             });
 
             connection.on(VoiceConnectionStatus.Ready, () => {
-                console.info('Ses kanalına bağlandım!', "Müzik");
+                console.log('Ses kanalına bağlandım!');
             });
 
             connection.on(VoiceConnectionStatus.Disconnected, () => {
                 connection.destroy();
-                console.info('Ses kanalından ayrıldım!', "Müzik");
+                console.log('Ses kanalından ayrıldım!');
             });
 
         } catch (error) {
-            console.error('Ses kanalına bağlanırken bir hata oldu:' + error, "Hata");
+            console.log('Ses kanalına bağlanırken bir hata oldu:' + error);
             return interaction.editReply({ content: 'Ses kanalına bağlanırken bir hata oldu.' });
         }
 
@@ -72,7 +71,7 @@ module.exports = {
                 try {
                     info = await ytdl.getBasicInfo(url);
                 } catch (error) {
-                    console.error('Şarkı bilgileri alınırken bir hata oldu:' + error, "Hata");
+                    console.log('Şarkı bilgileri alınırken bir hata oldu:' + error);
                     return;
                 }
 
@@ -102,7 +101,7 @@ module.exports = {
                     info = await ytdl.getBasicInfo(songUrl);
                     interaction.client.currentSong = info;
                 } catch (error) {
-                    console.error('Şarkı bilgileri alınırken bir hata oldu:' + error, "Hata");
+                    console.log('Şarkı bilgileri alınırken bir hata oldu:' + error);
                     return;
                 }
 
@@ -159,7 +158,7 @@ module.exports = {
                 interaction.client.player = player;
 
             } catch (err) {
-                console.error('Şarkı açılırken bir hata oldu:' + err, "Hata");
+                console.log('Şarkı açılırken bir hata oldu:' + err);
                 interaction.client.currentSong = null;
                 connection.destroy();
                 interaction.editReply({ content: 'Şarkı açılırken bir hata oldu.' });
@@ -169,4 +168,5 @@ module.exports = {
         interaction.client.connection = connection;
         interaction.client.loop = false;
     }
+
 }
