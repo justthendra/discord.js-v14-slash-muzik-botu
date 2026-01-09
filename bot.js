@@ -28,7 +28,7 @@ for (const folder of commandFolders) {
 		if ('data' in command && 'execute' in command) {
 			client.commands.set(command.data.name, command);
 		} else {
-			console.error(`[UYARI] ${filePath} isimli komut "data" veya "execute" tanımı içermediği için çalıştırılamadı.`, "Komutlar");
+			console.error(`[UYARI] ${filePath} isimli komut "data" veya "execute" tanımı içermediği için çalıştırılamadı.`);
 		}
 	}
 }
@@ -97,3 +97,4 @@ process.on('uncaughtException', (err, origin) => {
 
 
 client.login(config.bot.token);
+
